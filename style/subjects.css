@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ffffff;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    border-bottom: 1px solid #1a1a52;
+    position: relative;
+    z-index: 1000; /* Oppdaterer z-index for å sikre høy prioritet */
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fefefe;
+}
+
+.hamburger {
+    cursor: pointer;
+    z-index: 20; /* Sørger for at hamburger-ikonet er over andre elementer */
+    display: none; /* Skjult som standard, vises bare under breakpoint */
+}
+
+.nav-bar {
+    display: flex; /* Standard visning for større skjermer */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Endrer til 'relative' */
+    width: auto;
+    background: transparent;
+    overflow: visible;
+    z-index: 5; /* Justering ikke nødvendig her */
+}
+
+.nav-bar ul {
+    display: flex;
+    margin: 0 auto; /* Sentrerer listen */
+    padding: 0;
+    text-align: center;
+}
+
+.nav-bar ul li a {
+    color: #000636;
+    font-size: 20px;
+    padding: 10px 25px;
+    margin: 0 5px;
+    display: inline-block; /* Bevarer layouten for lenkene */
+}
+
+/* Mobilvisning og hamburgermeny */
+@media only screen and (max-width:995px) {
+    .hamburger {
+        display: block; /* Viser hamburger-ikonet på mindre skjermer */
+    }
+    
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: #000636;
+        margin: 6px 0;
+    }
+
+    .nav-bar {
+        display: none; /* Skjuler nav-baren */
+        position: fixed; /* Bruker 'fixed' for å overlappe innhold */
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: #fefefe;
+        transition: 0.5s;
+        overflow: hidden;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 20px 0; /* Tilføyer padding */
+        z-index: 999; /* Sørger for at dropdown er over andre elementer */
+    }
+    
+    .nav-bar.active {
+        display: block; /* Viser nav-baren når aktiv */
+        height: auto; /* Automatisk høyde basert på innhold */
+    }
+    
+    .nav-bar ul {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .nav-bar ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #0498FA;
+    }
+    
+    .nav-bar ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-bar ul li a {
+        display: block; /* Gjør at lenkene tar full bredde av forelderen */
+        margin: 10px 0; /* Gir litt mer plass mellom lenkene */
+    }
+}
+
+/* Justeringer for padding i header basert på skjermstørrelse */
+@media only screen and (max-width:1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width:1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+
+.heading {
+    margin-top: 60px;
+    text-align: center;
+    color: #0D3348;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
+}
+
+.paragraph {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #0D3348;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    margin-bottom: 50px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Gjør at boksene kan bryte til neste linje på små skjermer */
+    margin: 0 65px;
+    justify-content: space-between; /* Sørger for lik fordeling av boksene */
+}
+
+.custom-button {
+    background-image: url('../images/bakgrunn.PNG');
+    background-position: center;
+    border-radius: 5px;
+    width: calc(50% - 25px);
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    margin-bottom: 20px;
+}
+
+.custom-button:nth-child(odd) {
+    margin-right: 10px;
+}
+
+.custom-button:nth-child(even) {
+    margin-left: 10px;
+}
+
+.custom-button h2, .custom-button p {
+    text-align: center;
+}
+
+.read-more-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.read-more-link {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.read-more-link:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+@media (max-width: 768px) {
+    .paragraph, .button-container {
+        padding: 0 30px; /* Legger til padding på sidene for nettbrett */
+        margin: 0 auto; /* Sentrerer innholdet */
+    }
+    
+    .custom-button {
+        width: 100%; /* Full bredde for bokser på nettbrett og mobil */
+        margin: 0 0 20px 0; /* Justerer margin for å ha boksene under hverandre */
+    }
+    
+    .custom-button:nth-child(odd), .custom-button:nth-child(even) {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .paragraph {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .paragraph {
+        font-size: 16px; /* Gjør teksten litt mindre på mobil */
+        text-align: center;
+    }
+}
+
+
+/* Innhold før footeren bør ha mulighet til å vokse og fylle tilgjengelig plass, dette sikrer at footeren forblir nederst */
+.content {
+    margin-bottom: 0; /* Fjerner margin-bottom fra det siste elementet */
+    flex: 1;
+}
+
+.site-footer {
+    background-color: #002f6c; /* Mørkeblå bakgrunnsfarge */
+    color: white; /* Hvit tekstfarge */
+    padding: 20px 0; /* Litt polstring */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 150px;
+    margin: 20px;
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #a9d2ff; /* Lysere blå for overskrifter */
+}
+
+.footer-section ul {
+    list-style: none; /* Ingen punktmerker */
+    padding: 0; /* Ingen polstring */
+}
+
+.footer-section ul li {
+    margin-bottom: 10px; /* Mellomrom mellom lenker */
+}
+
+.footer-section input[type="email"] {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #f7931e; /* Oransje knapp */
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin: 10px auto; /* Senter footer-seksjoner på mobil */
+    }
+}

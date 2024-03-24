@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ffffff;
+}
+
+header {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    border-bottom: 1px solid #1a1a52;
+    position: relative;
+    z-index: 1000; /* Oppdaterer z-index for å sikre høy prioritet */
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fefefe;
+}
+
+.hamburger {
+    cursor: pointer;
+    z-index: 20; /* Sørger for at hamburger-ikonet er over andre elementer */
+    display: none; /* Skjult som standard, vises bare under breakpoint */
+}
+
+.nav-bar {
+    display: flex; /* Standard visning for større skjermer */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Endrer til 'relative' */
+    width: auto;
+    background: transparent;
+    overflow: visible;
+    z-index: 5; /* Justering ikke nødvendig her */
+}
+
+.nav-bar ul {
+    display: flex;
+    margin: 0 auto; /* Sentrerer listen */
+    padding: 0;
+    text-align: center;
+}
+
+.nav-bar ul li a {
+    color: #000636;
+    font-size: 20px;
+    padding: 10px 25px;
+    margin: 0 5px;
+    display: inline-block; /* Bevarer layouten for lenkene */
+}
+
+/* Mobilvisning og hamburgermeny */
+@media only screen and (max-width:995px) {
+    .hamburger {
+        display: block; /* Viser hamburger-ikonet på mindre skjermer */
+    }
+    
+    .hamburger .line {
+        width: 30px;
+        height: 3px;
+        background: #000636;
+        margin: 6px 0;
+    }
+
+    .nav-bar {
+        display: none; /* Skjuler nav-baren */
+        position: fixed; /* Bruker 'fixed' for å overlappe innhold */
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: #fefefe;
+        transition: 0.5s;
+        overflow: hidden;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 20px 0; /* Tilføyer padding */
+        z-index: 999; /* Sørger for at dropdown er over andre elementer */
+    }
+    
+    .nav-bar.active {
+        display: block; /* Viser nav-baren når aktiv */
+        height: auto; /* Automatisk høyde basert på innhold */
+    }
+    
+    .nav-bar ul {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .nav-bar ul li {
+        padding: 10px 0;
+        border-bottom: 1px solid #0498FA;
+    }
+    
+    .nav-bar ul li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-bar ul li a {
+        display: block; /* Gjør at lenkene tar full bredde av forelderen */
+        margin: 10px 0; /* Gir litt mer plass mellom lenkene */
+    }
+}
+
+/* Justeringer for padding i header basert på skjermstørrelse */
+@media only screen and (max-width:1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width:1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+
+.content-container {
+    display: flex;
+    align-items: flex-start; /* Sikrer at elementene er toppjustert */
+    justify-content: space-between; /* Fordeler innholdet på hver sin side */
+    padding-right: 50px; /* 50px padding på høyre side av containeren */
+    margin-top: 60px;
+    margin-bottom: 70px;
+}
+
+.text-container {
+    /* Tilpass etter behov, f.eks. for å kontrollere bredden: */
+    max-width: 60%; /* Juster denne verdien basert på innholdet ditt */
+}
+
+.heading {
+    /* Stil for overskriften */
+    margin-top: 30px; /* Fjerner eventuell toppmargin */
+    padding: 0 50px;
+    color: #0D3348;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.subtext {
+    padding: 5px 50px;
+    color: #0D3348;
+    font-size: 18;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.image-container {
+    flex: 1; /* Lar bildet ta opp resterende plass */
+    display: flex;
+    justify-content: flex-end; /* Justerer bildet mot høyre */
+}
+
+.image-container img {
+    max-width: 100%; /* Sikrer at bildet er responsivt */
+    height: auto; /* Bevarer bildets aspektratio */
+    /* Tilpasser bildets maksimale bredde om nødvendig: */
+    max-width: 100%; /* Eksempel for å begrense bildets bredde, juster etter behov */
+}
+
+.book-button {
+    display: inline-block; /* Eller block, avhengig av layout */
+    background-color: #007BFF; /* Eksempel: en blå farge */
+    color: white; /* Tekstfarge */
+    text-align: center;
+    padding: 15px 25px; /* Juster etter behov */
+    font-size: 16px; /* Juster etter behov */
+    border: none; /* Fjerner standard kantlinje */
+    cursor: pointer; /* Endrer musepekeren til en peker */
+    text-decoration: none; /* Fjerner understrekning for lenker */
+    border-radius: 5px; /* Tilføyer avrundede hjørner */
+    transition: background-color 0.3s; /* Gjør en jevn overgang for hover-effekt */
+    margin-left: 50px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+
+}
+
+.book-button:hover {
+    background-color: #0056b3;
+}
+
+/* Fortsetter med eksisterende stilsett uten endringer */
+
+/* Responsiv tilpasning for skjermer mindre enn 768px (typisk mobilvisninger) */
+@media (max-width: 800px) {
+    .content-container {
+        flex-direction: column;
+        padding-right: 0; /* Tilpasser padding for mobilvisning */
+        align-items: center; /* Sentrerer innholdet */
+        margin-top: 20px; /* Justerer toppmarginen for mobil */
+        margin-bottom: 20px;
+    }
+
+    .text-container, .image-container {
+        max-width: 100%; /* Lar tekst og bilde ta full bredde */
+        padding: 0 15px; /* Legger til litt padding på sidene for mobil */
+    }
+
+    .image-container {
+        order: -1; /* Plasserer bildet over teksten */
+    }
+
+    .heading, .subtext {
+        text-align: center; /* Sentrerer tekst for mobil */
+        padding: 10px 0; /* Justerer padding for bedre lesbarhet */
+    }
+
+    .book-button {
+        margin: 20px auto; /* Sentrerer knappen og legger til margin rundt */
+        padding: 10px 20px; /* Opprettholder padding for knappen */
+        display: block;
+        text-align: center;
+        width: 400px;
+    }
+}
+
+
+
+
+.site-footer {
+    background-color: #002f6c; /* Mørkeblå bakgrunnsfarge */
+    color: white; /* Hvit tekstfarge */
+    padding: 20px 0; /* Litt polstring */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 150px;
+    margin: 20px;
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #a9d2ff; /* Lysere blå for overskrifter */
+}
+
+.footer-section ul {
+    list-style: none; /* Ingen punktmerker */
+    padding: 0; /* Ingen polstring */
+}
+
+.footer-section ul li {
+    margin-bottom: 10px; /* Mellomrom mellom lenker */
+}
+
+.footer-section input[type="email"] {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    background-color: #f7931e; /* Oransje knapp */
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin: 10px auto; /* Senter footer-seksjoner på mobil */
+    }
+}
+
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 50px;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.box-heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0D3348;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 50px;
+    margin-bottom: 30px;
+    text-align: left; /* Venstrejustert på PC */
+    margin-top: 30px;
+}
+
+.box-box {
+    flex-basis: calc(25% - 20px); /* 4 bokser per linje */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #C0CDD4;
+}
+
+.box-image {
+    width: 100%;
+    height: 200px; /* Fast høyde for å sikre lik høyde på alle bilder */
+    object-fit: cover; /* Sikrer at bildet dekker hele området uten å miste forhold */
+}
+
+.box-title, .box-date, .box-description {
+    margin: 10px 0;
+    color: #000000;
+}
+
+.box-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: auto;
+    width: 80%;
+}
+
+.box-btn:hover {
+    background-color: #0056b3;
+}
+
+.see-all {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 50px; /* Holder venstrejusteringen */
+    margin-bottom: 30px;
+}
+
+.see-all:hover {
+    background-color: #0056b3;
+}
+
+/* Responsivitet for nettbrett */
+@media (max-width: 1000px) {
+    .box-box {
+        flex-basis: calc(50% - 20px); /* 2 bokser per linje */
+    }
+    /* Om nødvendig, sentrer .box-heading og .see-all her */
+}
+
+/* Responsivitet for mobil */
+@media (max-width: 600px) {
+    .box-box {
+        flex-basis: 100%; /* 1 boks per linje */
+    }
+    .box-heading, .see-all {
+        text-align: center; /* Sentrering på mobile enheter */
+        padding: 10px 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        display: block;
+    }
+}
+
+
+.wide-box {
+    background-image: url('../images/bakgrunn.PNG'); /* Angi stien til ditt bilde */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Hvit tekst for kontrast mot bakgrunnen */
+    text-align: center;
+    padding: 50px 20px; /* Øk padding for å gi rom rundt innholdet */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: 50px 50px; /* Samme margin som .section-box for konsistens */
+    border-radius: 10px;
+}
+
+
+.wide-box-heading {
+    font-size: 30px; /* Større skriftstørrelse for overskriften */
+    margin: 20px 0; /* Mellomrom over og under overskriften */
+}
+
+.wide-box-description {
+    font-size: 18px; /* Tilpasset skriftstørrelse for beskrivelsen */
+    margin-bottom: 30px; /* Mellomrom under beskrivelsen */
+    line-height: 1.5;
+}
+
+
+.wide-box-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0056b3; /* Blå bakgrunnsfarge for knappen */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.wide-box-button:hover {
+    background-color: #004494; /* Mørkere blå ved hover */
+}
+
+@media (max-width: 600px) {
+    .wide-box {
+        margin: 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-radius: 0;
+    }
+    
+}
